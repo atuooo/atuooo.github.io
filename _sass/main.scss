@@ -117,7 +117,8 @@ span[data-note] {
   -webkit-animation-fill-mode: both;
   -webkit-animation-name: bounce;
   a {
-    background-image: url("abc.png");
+    background-image: url("light.png");
+    background-repeat: no-repeat;
     color: #000;
     background-position: center;
     text-decoration: none;
@@ -125,7 +126,7 @@ span[data-note] {
     height: 60px;
     width: 60px;
     font-size: 1.5em;
-    border-radius: 100%;
+    border-radius: 50%;
     display: inline-block;
     text-align: center;
     line-height: 100px;
