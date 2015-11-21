@@ -64,6 +64,28 @@ s = "Python syntax highlighting"
 print s
 ```
 
+```swift
+extension ATGIFViewController: GIFLibraryChangeObserver {
+    
+    func gifLibraryDidChange() {
+        self.hud = MBProgressHUD.init(view: self.view)
+        self.view.addSubview(self.hud)
+        self.hud.dimBackground = true
+        self.hud.delegate = self
+        
+        self.hud.showAnimated(true, whileExecutingBlock: {
+                self.updateUI()
+            }, onQueue: dispatch_get_main_queue())
+    }
+    
+    func updateUI() {
+        self.imagesData = gifLibrary.fetchGIFDatas()
+        self.collectionView?.reloadData()
+        self.collectionView?.collectionViewLayout.invalidateLayout()
+    }
+}
+```
+
 ```
 No language indicated, so no syntax highlighting.
 But let's throw in a <b>tag</b>.
