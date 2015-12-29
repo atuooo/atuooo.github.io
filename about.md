@@ -2,10 +2,10 @@
 title: About
 ---
 
-Hello.
+Hello. 
 
-The main purpose of this theme is to be as simple as it could be, so you can focus on writing your stuffs. This is your About page. You may describe about yourself here; who you are, what are you currently doing, share some of your projects, your social links and how people can contact you, etc.
+Welcome to my .xyz.
 
-**Just write thing that matters..**
+Thanks for <a href="https://github.com/heiswayi/the-plain" target="_blank">Heiswayi Nrird</a> & <a href="https://gitcafe.com" target="_blank">Gitcafe</a>
 
 Enjoy!
