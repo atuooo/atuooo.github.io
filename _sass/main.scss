@@ -152,7 +152,7 @@ span[data-note] {
       }
     }
   }
-  @media (max-width: 700px) {
+  @media (max-width: 900px) {
     text-align: center;
   }
   .logo-prompt {
@@ -215,7 +215,7 @@ code {
   color: #f14e32;
   background: tansform;
   padding: 2px 6px;
-  font-size: 13px;
+  font-size: 14px;
 }
 pre {
   display: block;
@@ -280,7 +280,7 @@ article {
     margin: 30px 0;
   }
   p {
-    font-size: 15px;
+    font-size: 16px;
     line-height: 1.9em;
     word-wrap: break-word;
   }
@@ -311,7 +311,7 @@ article {
   }
 }
 section {
-  max-width: 500px;
+  max-width: 600px;
   margin: 0 auto;
   ul {
     list-style: none;
@@ -335,6 +335,15 @@ section {
       .post-date {
         float: right;
         margin: 0 0 0 20px;
+      }
+
+     @media (max-width: 500px) {
+        .post-date {
+          text-indent:-9999px;
+        }
+        .title {
+          overflow: visible !important;
+        }
       }
       span {
         display: inline-block;
