@@ -1,0 +1,199 @@
+@font-face { 
+    font-family: 'Pacifico';
+    src:url('/assets/fonts/Pacifico.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face { 
+    font-family: 'FingerPaint-Regular';
+    src:url('/assets/fonts/FingerPaint-Regular.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.axis {
+    
+    display:inline-block;
+    text-align: center;
+    img {
+        display: inline-block;
+    }
+}
+
+.space {
+  width: 500px;
+  height: 500px;
+
+  padding: {
+    top: 60px;
+    left: 10px;
+    right: 10px;
+  };
+
+  margin: {
+    left: auto;
+    right: auto;
+  };
+
+  a {
+    text-decoration: none;
+    border-bottom: 0px;
+  }
+}
+
+.greet {
+    font-family: 'FingerPaint-Regular' !important;
+    position: relative;
+    text-align: center;
+    font-size: 17px;
+    top: 200px;
+}
+
+@media (max-width: 600px) {
+    .great {
+        font-size: 30px;
+    }
+}
+
+.social {
+  position: relative;
+  width: 500px;
+  top: 220px;
+  text-align: center;
+
+  margin: {
+    left: auto;
+    right: auto;
+  };
+
+  li {
+    display: inline-block;
+    padding: 0 10px;
+  }
+
+  a {
+    color: blue;
+
+    &:hover,
+    &:active,
+    &:focus {
+      color: black;
+    }
+  }
+
+  img {
+    display: inline-block;
+  }
+}
+
+.icon-social { 
+    position: relative;
+    width: 25px;
+    height: 25px;
+}
+
+.xAxis {
+    position: relative;
+    width: 214px;
+    height: 52px;
+    top: 56px;
+    left: 145px;
+    
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+    animation-timing-function: cubic-bezier(0,.72,1,.55);
+    animation-name: xKey;
+    -webkit-animation-duration: 0.5s;
+    -webkit-animation-fill-mode: forwards;
+    -webkit-animation-timing-function: cubic-bezier(0,.72,1,.55);
+    -webkit-animation-name: xKey;
+ }
+
+.yAxis {
+    position: relative;
+    width: 148px;
+    height: 153px;
+    left: -257px;
+    top: 180px;
+
+    animation: 0.5s yKey cubic-bezier(0,.72,1,.55) forwards;
+    -webkit-animation: 0.5s yKey cubic-bezier(0,.72,1,.55) forwards;
+}
+
+.zAxis {
+    position: relative;
+    width: 50px;
+    height: 200px;
+    left: 160px;
+    
+    animation: 0.5s zKey cubic-bezier(0,.72,1,.55) forwards;
+    -webkit-animation: 0.5s zKey cubic-bezier(0,.72,1,.55) forwards;
+}
+
+.xAxis:hover {
+    transform: skew(15deg);
+    -ms-transform: skew(15deg); /* IE 9 */
+    -webkit-transform: skew(15deg); /* Safari and Chrome */
+}
+
+.yAxis:hover {
+    transform: skew(10deg,10deg);
+    -ms-transform: skew(10deg,10deg); /* IE 9 */
+    -webkit-transform: skew(10deg,10deg); /* Safari and Chrome */
+   
+}
+
+.zAxis:hover {
+    transform: skew(0, 15deg);
+    -ms-transform: skew(0, 15deg); /* IE 9 */
+    -webkit-transform: skew(0, 15deg); /* Safari and Chrome */    
+}
+
+.loog {
+    position: relative;
+    border-radius: 50%;
+    width: 35px;
+    height: 45px;
+    left: 200px;
+    top: 45px;
+
+    transform:rotate(-32deg);
+    -ms-transform:rotate(-32deg); /* IE 9 */
+    -webkit-transform:rotate(-32deg); /* Safari and Chrome */
+}
+
+@keyframes yKey {
+    from {top: 1333px; left: -1390px;}
+    to {top: 180px; left: -257px;}
+}
+
+@-webkit-keyframes yKey {
+    from {top: 1333px; left: -1390px;}
+    to {top: 180px; left: -257px;}
+}
+
+
+@keyframes zKey {
+    from {top: 333px;}
+    to {top: 0px}
+}
+
+@-webkit-keyframes zKey {
+    from { top: -1333px;}
+    to {top: 0px}
+}
+
+
+@keyframes xKey
+{
+    from {left: 1333px;}
+    to {left: 145px;}
+}
+
+@-webkit-keyframes xKey
+{
+    from {left: 1333px;}
+    to {left: 145px;}
+}
+

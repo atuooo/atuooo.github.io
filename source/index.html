@@ -1,21 +1,13 @@
-<!DOCTYPE html>
-<html>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+---
+layout: home
+---
 
-	<title>.xyz</title>
-
-
-<link rel="stylesheet" href="/assets/core.css">
-
-  <body >
-      <section>
+<section>
 <div class = "space">
-<a href="/" class="axis"><img src="/assets/avtar.jpg" class="loog"></a>
-<a href="/z" class="axis"><img src="/assets/z.png" class="zAxis"></a>
-<a href="/x" class="axis"><img src="/assets/x.png" class="xAxis"></a>
-<a href="/y" class="axis"><img src="/assets/y.png" class="yAxis"></a>
+<a href="{{ '/' | prepend: site.baseurl }}" class="axis"><img src="/assets/avtar.jpg" class="loog"></a>
+<a href="{{ '/z' | prepend: site.baseurl }}" class="axis"><img src="/assets/z.png" class="zAxis"></a>
+<a href="{{ '/x' | prepend: site.baseurl }}" class="axis"><img src="/assets/x.png" class="xAxis"></a>
+<a href="{{ '/y' | prepend: site.baseurl }}" class="axis"><img src="/assets/y.png" class="yAxis"></a>
 
 <div class="greet">Hello, Welcome to atuo.xyz</div>
 
@@ -28,6 +20,3 @@
 </div>
 
 </section>
-
-  </body>
-</html>
