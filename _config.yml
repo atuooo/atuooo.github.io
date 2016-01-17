@@ -8,7 +8,6 @@ author_email:       aaatuooo@gmail.com
 # Site Settings
 baseurl:            "" # Base URL must end WITHOUT a slash, default: ""
 permalink:          /:categories/:title # Post permalink
-source:             source
 
 # Site Build
 #highlighter:        pygments
