@@ -633,7 +633,7 @@ code {
   line-height: 1.5em;
 }
 .profile-block {
-  padding: 15px 20px;
+  padding: 15px 20px 15px 20px;
   border-bottom: 1px solid #eceff2;
 }
 .profile-block:last-child {
@@ -660,6 +660,9 @@ code {
   margin: 10px auto 20px;
   width: 128px;
   height: 128px;
+  -moz-border-radius: 64px;
+  -webkit-border-radius: 64px;
+  border-radius: 64px;
 }
 #profile .inner .base-info #name,
 #profile .inner .base-info #title,
@@ -674,6 +677,7 @@ code {
 #profile .inner .base-info #location {
   font-size: 12px;
   margin-top: 5px;
+  margin-bottom: 10px;
   color: #9a9ea3;
 }
 #profile .inner .base-info #location .fa {
