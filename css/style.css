@@ -660,9 +660,9 @@ code {
   margin: 10px auto 20px;
   width: 128px;
   height: 128px;
-  -moz-border-radius: 64px;
-  -webkit-border-radius: 64px;
-  border-radius: 64px;
+  border-radius: 50%;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
 }
 #profile .inner .base-info #name,
 #profile .inner .base-info #title,
