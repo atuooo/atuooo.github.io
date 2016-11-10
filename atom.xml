@@ -4,9 +4,9 @@
   
   <link href="/atom.xml" rel="self"/>
   
-  <link href="https://atuooo.github.io/"/>
+  <link href="http://atuo.xyz/"/>
   <updated>2016-11-10T03:04:51.000Z</updated>
-  <id>https://atuooo.github.io/</id>
+  <id>http://atuo.xyz/</id>
   
   <author>
     <name>ooatuoo</name>
@@ -17,8 +17,8 @@
   
   <entry>
     <title>Hello World</title>
-    <link href="https://atuooo.github.io/hello-world/"/>
-    <id>https://atuooo.github.io/hello-world/</id>
+    <link href="http://atuo.xyz/hello-world/"/>
+    <id>http://atuo.xyz/hello-world/</id>
     <published>2015-12-31T06:49:13.000Z</published>
     <updated>2016-11-10T03:04:51.000Z</updated>
     
@@ -42,7 +42,7 @@
     </summary>
     
     
-      <category term="HelloWord" scheme="https://atuooo.github.io/tags/HelloWord/"/>
+      <category term="HelloWord" scheme="http://atuo.xyz/tags/HelloWord/"/>
     
   </entry>
   
