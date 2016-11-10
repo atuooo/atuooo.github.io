@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://atuooo.github.io/"/>
-  <updated>2016-11-09T06:25:54.000Z</updated>
+  <updated>2016-11-10T03:04:51.000Z</updated>
   <id>https://atuooo.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://atuooo.github.io/hello-world/"/>
     <id>https://atuooo.github.io/hello-world/</id>
     <published>2015-12-31T06:49:13.000Z</published>
-    <updated>2016-11-09T06:25:54.000Z</updated>
+    <updated>2016-11-10T03:04:51.000Z</updated>
     
     <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
 <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
@@ -31,6 +31,8 @@
 <p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
 <h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+<h3 id="Qiniu-image-test"><a href="#Qiniu-image-test" class="headerlink" title="Qiniu image test"></a>Qiniu image test</h3><img title="alec_berg" alt="it's" src="http://ogem1is2k.bkt.clouddn.com/static/images/alec_berg.png">
+<img title="alec_berg" alt="it's" src="http://ogem1is2k.bkt.clouddn.com/static/images/alec_berg.png?imageView2/2/w/600">
 ]]></content>
     
     <summary type="html">
