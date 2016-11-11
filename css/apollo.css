@@ -530,7 +530,7 @@ pre .coffeescript .javascript, pre .javascript .xml, pre .tex .formula, pre .xml
 }
 
 section.container {
-	margin: 2em 10px
+	margin: 0px 10px
 }
 @media screen and (min-width:700px) {
 	.wrap {
