@@ -1,28 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
-  <title>ooatuoo</title>
-  
-  <link href="/atom.xml" rel="self"/>
-  
-  <link href="http://atuo.xyz/"/>
-  <updated>2016-11-16T15:05:18.000Z</updated>
-  <id>http://atuo.xyz/</id>
-  
-  <author>
-    <name>ooatuoo</name>
-    
-  </author>
-  
-  <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>关于 unowned &amp; weak 的选择</title>
-    <link href="http://atuo.xyz/unowned_weak/"/>
-    <id>http://atuo.xyz/unowned_weak/</id>
-    <published>2016-11-15T16:00:00.000Z</published>
-    <updated>2016-11-16T15:05:18.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>我们在使用闭包的时候，经常会遇到循环强引用的情况。当你将一个闭包赋值给类实例的某个属性，并且这个闭包体中又使用了这个类实例时，便会产生循环强引用。举个例子：<br><a id="more"></a></p>
+<!DOCTYPE html><html lang="cn"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> 关于 unowned & weak 的选择</title><meta name="description" content="关于 unowned &amp; weak 的选择 - ooatuoo"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="short icon" href="/favicon.png"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="http://atuo.xyz/atom.xml" title="ooatuoo"></head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.png"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="http://weibo.com/ooatuoo" target="_blank" class="nav-list-link">WEIBO</a></li><li class="nav-list-item"><a href="https://github.com/atuooo" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="/atom.xml" target="_self" class="nav-list-link">RSS</a></li></ul></header><section class="container"><div class="post"><article class="post-block"><h1 class="post-title">关于 unowned & weak 的选择</h1><div class="post-info">Nov 16, 2016</div><div class="post-content"><p>我们在使用闭包的时候，经常会遇到循环强引用的情况。当你将一个闭包赋值给类实例的某个属性，并且这个闭包体中又使用了这个类实例时，便会产生循环强引用。举个例子：<br><a id="more"></a></p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">SomeButton</span>: <span class="title">UIButton</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> tapHandler: (() -&gt; <span class="type">Void</span>)?</div><div class="line">    </div><div class="line">    <span class="keyword">deinit</span> &#123;</div><div class="line">      <span class="built_in">print</span>(<span class="string">"SomeButton is being deinitialized"</span>)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ViewController</span>: <span class="title">UIViewController</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> aButton = <span class="type">SomeButton</span>()</div><div class="line">    </div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewDidLoad</span><span class="params">()</span></span> &#123;</div><div class="line">    	<span class="keyword">super</span>.viewDidLoad()</div><div class="line">    	<span class="built_in">print</span>(<span class="string">"view did load"</span>)</div><div class="line">    	</div><div class="line">    	aButton.tapHandler = &#123;</div><div class="line">            <span class="keyword">self</span>.doSomething()</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">doSomething</span><span class="params">()</span></span> &#123; </div><div class="line">    	<span class="comment">// ...</span></div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="keyword">deinit</span> &#123;</div><div class="line">    	<span class="built_in">print</span>(<span class="string">"ViewController is being deinitialized"</span>)</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>当把这个 ViewController push 完在 pop 出去后，控制台输出：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">view did load</div></pre></td></tr></table></figure></p>
 <p>显然，析构函数没有被调用，ViewController 和 SomeButton 的实例都没有被释放，因此，两者之间形成了循环强引用。</p>
@@ -65,17 +41,14 @@
 <li><a href="http://swifter.tips/retain-cycle/" target="_blank" rel="external">内存管理，WEAK 和 UNOWNED</a></li>
 <li><a href="http://stackoverflow.com/questions/25377674/unowned-vs-weak-why-we-should-prefer-unowned" target="_blank" rel="external">unowned vs. weak. Why we should prefer unowned?</a></li>
 </ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;我们在使用闭包的时候，经常会遇到循环强引用的情况。当你将一个闭包赋值给类实例的某个属性，并且这个闭包体中又使用了这个类实例时，便会产生循环强引用。举个例子：&lt;br&gt;
-    
-    </summary>
-    
-    
-      <category term="swift" scheme="http://atuo.xyz/tags/swift/"/>
-    
-  </entry>
-  
-</feed>
+</div></article></div></section><footer><div class="paginator"></div><div data-thread-key="unowned_weak/" data-title="关于 unowned &amp; weak 的选择" data-url="http://atuo.xyz/unowned_weak/" data-author-key="1" class="ds-thread"></div><script>var duoshuoQuery = {short_name:"ooatuoo"};
+(function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+
+</script><div class="copyright"><p>© 2016 <a href="http://atuo.xyz">ooatuoo</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create',"UA-67913126-2",'auto');ga('send','pageview');</script></body></html>
