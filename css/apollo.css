@@ -155,10 +155,10 @@ html, body {
 body {
 	margin: 0;
 	color: #34495e;
-	font-size: 15px;
+	font-size: 16px;
 	line-height: 1.6;
 	background-color: #fff;
-	font-family: 'sourcesanspro', 'Helvetica Neue', Arial, sans-serif
+	font-family: 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif
 }
 ul.nav, ul.post-list {
 	margin: 0;
@@ -376,9 +376,9 @@ header .nav-list-item a {
 	max-width: 95%
 }
 code, pre {
-	font-size: 0.8em;
+	font-size: 14px;
 	background-color: #f8f8f8;
-	font-family: 'Roboto Mono', Monaco, courier, monospace
+	font-family: 'Menlo', Monaco, courier, monospace
 }
 .highlight {
 	position: relative;
