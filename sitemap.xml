@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://atuo.xyz/fetch-gif/</loc>
+    
+    <lastmod>2016-12-05T05:43:18.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://atuo.xyz/unowned_weak/</loc>
     
-    <lastmod>2016-11-16T16:01:38.000Z</lastmod>
+    <lastmod>2016-12-05T03:02:24.000Z</lastmod>
     
   </url>
   
