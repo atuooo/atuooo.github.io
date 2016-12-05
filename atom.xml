@@ -124,18 +124,9 @@
     <link href="http://atuo.xyz/view_pg/"/>
     <id>http://atuo.xyz/view_pg/</id>
     <published>2015-12-26T16:00:00.000Z</published>
-    <updated>2016-12-05T08:57:30.000Z</updated>
+    <updated>2016-12-05T09:04:29.000Z</updated>
     
     <content type="html"><![CDATA[<p>这两天把 <a href="https://developer.apple.com/library/ios/documentation/WindowsViews/Conceptual/ViewPG_iPhoneOS/Introduction/Introduction.html" target="_blank" rel="external">View Programming Guide</a> 看了一遍，内容不算多也很基础，不过有些注意点和问题自己以前也困惑过，所以想总结一下。也顺便写了个 <a href="https://github.com/atuooo/ExampleOfViewPG" target="_blank" rel="external">demo</a>，方便理解。</p>
-<h2 id="contentMode"><a href="#contentMode" class="headerlink" title="contentMode"></a>contentMode</h2><p>关于<code>contentMode</code>各个mode间的区别，这张图足以说明:</p>
-<p><a href="http://stackoverflow.com/a/24671000" target="_blank" rel="external"><img src="http://ogem1is2k.bkt.clouddn.com/static/images/view_pg/content_mode_overview" alt="content_mode_overview"></a></p>
-<p>还有个就是<code>UIViewContentModeRedraw</code>，当设置为这个mode时，每一次你改变视图的几何状态时，都会调用<code>drawRect:</code>来响应视图的变化（如果你设置为其他mode的话，<code>drawRect:</code>只会第一次显示的时候调用，之后只会在已经显示的视图内容上进行变化，不会重新绘制视图）。因此设置这个mode的话会导致视图变化响应变慢，所以你应该尽量避免使用这个值，除非你想在你的自定义视图中以自己的方式来拉伸和调整尺寸。</p>
-<a id="more"></a>
-<h2 id="Stretchable-Views"><a href="#Stretchable-Views" class="headerlink" title="Stretchable Views"></a>Stretchable Views</h2><p>文档中提到可以用通过设置<code>contentStretch</code>来使视图 stretchable，只是这个属性在 iOS6.0 的时候就被废除了(-_-!)。不过可以通过 <code>UIImage</code> 的 <code>resizableImageWithCapInsets:</code> 来实现.</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> image = <span class="type">UIImage</span>(named: <span class="string">"stretchImage"</span>)!</div><div class="line"><span class="keyword">let</span> edgeInsets = <span class="type">UIEdgeInsetsMake</span>(<span class="number">30</span>, <span class="number">30</span>, <span class="number">30</span>, <span class="number">30</span>)</div><div class="line">imageView.image = image.resizableImageWithCapInsets(edgeInsets, resizingMode: .stretch)</div></pre></td></tr></table></figure>
-<p>效果如下:<br><img src="http://ogem1is2k.bkt.clouddn.com/static/images/view_pg/stretchable_demo_ss" alt="stretch_demo"></p>
-<p>你也可以直接在 Asset Catalog 里面选择图片，点击Show Slicing来设置：<br><img src="http://ogem1is2k.bkt.clouddn.com/static/images/view_pg/setting_slicing.png" alt="set_slicing"></p>
-<p>更详细的设置你可以看下这篇 <a href="http://natashatherobot.com/ios-stretchable-button-uiedgeinsetsmake/" target="_blank" rel="external">文章</a>。</p>
 <h2 id="Frame-amp-Bounds-amp-Center"><a href="#Frame-amp-Bounds-amp-Center" class="headerlink" title="Frame &amp; Bounds &amp; Center"></a>Frame &amp; Bounds &amp; Center</h2><p>你可以独立地更改frame，bounds，和 center，但改变其中一个会对其他的造成影响：</p>
 <ul>
 <li>当你设置了 frame 属性是，bounds 属性内的尺寸值会相应的适配框架矩形的尺寸值。在 center 属性内的值同样改更改适配新的框架矩形的中心点。</li>
@@ -143,6 +134,15 @@
 <li>当你设置了 bounds 属性的尺寸，在 frame 属性内的尺寸值同样改变适配新的边界矩形的尺寸。</li>
 </ul>
 <p>还有，默认情况下，子视图不会被它的父视图剪切。因此，任何位于父视图的框架外部的子视图都是以其整体呈现。你可以改变这个行为，通过设置父视图的 <code>clipsToBounds</code> 属性为 YES。无论子视图可见部分是否被剪切，触摸事件始终遵从目标的父视图的边界矩形。换句话说，在父视图边界矩形外部的那部分视图发生的触摸事件不会发出给视图。</p>
+<h2 id="contentMode"><a href="#contentMode" class="headerlink" title="contentMode"></a>contentMode</h2><p>关于<code>contentMode</code>各个mode间的区别，这张图足以说明:</p>
+<a id="more"></a>
+<p><a href="http://stackoverflow.com/a/24671000" target="_blank" rel="external"><img src="http://ogem1is2k.bkt.clouddn.com/static/images/view_pg/content_mode_overview" alt="content_mode_overview"></a></p>
+<p>还有个就是<code>UIViewContentModeRedraw</code>，当设置为这个mode时，每一次你改变视图的几何状态时，都会调用<code>drawRect:</code>来响应视图的变化（如果你设置为其他mode的话，<code>drawRect:</code>只会第一次显示的时候调用，之后只会在已经显示的视图内容上进行变化，不会重新绘制视图）。因此设置这个mode的话会导致视图变化响应变慢，所以你应该尽量避免使用这个值，除非你想在你的自定义视图中以自己的方式来拉伸和调整尺寸。</p>
+<h2 id="Stretchable-Views"><a href="#Stretchable-Views" class="headerlink" title="Stretchable Views"></a>Stretchable Views</h2><p>文档中提到可以用通过设置<code>contentStretch</code>来使视图 stretchable，只是这个属性在 iOS6.0 的时候就被废除了(-_-!)。不过可以通过 <code>UIImage</code> 的 <code>resizableImageWithCapInsets:</code> 来实现.</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> image = <span class="type">UIImage</span>(named: <span class="string">"stretchImage"</span>)!</div><div class="line"><span class="keyword">let</span> edgeInsets = <span class="type">UIEdgeInsetsMake</span>(<span class="number">30</span>, <span class="number">30</span>, <span class="number">30</span>, <span class="number">30</span>)</div><div class="line">imageView.image = image.resizableImageWithCapInsets(edgeInsets, resizingMode: .stretch)</div></pre></td></tr></table></figure>
+<p>效果如下:<br><img src="http://ogem1is2k.bkt.clouddn.com/static/images/view_pg/stretchable_demo_ss" alt="stretch_demo"></p>
+<p>你也可以直接在 Asset Catalog 里面选择图片，点击Show Slicing来设置：<br><img src="http://ogem1is2k.bkt.clouddn.com/static/images/view_pg/setting_slicing.png" alt="set_slicing"></p>
+<p>更详细的设置你可以看下这篇 <a href="http://natashatherobot.com/ios-stretchable-button-uiedgeinsetsmake/" target="_blank" rel="external">文章</a>。</p>
 <h2 id="Transform"><a href="#Transform" class="headerlink" title="Transform"></a>Transform</h2><p>UIView的 <code>transform</code> 属性提供了一种简单快速的方式来改变视图，但需要注意的一点就是，如果你对视图进行 transform 操作，那么 <code>frame</code> 属性的值是不可靠的，你只能使用 bounds（不会因为transform而改变） 和 center 来获取视图的尺寸和定位。</p>
 <p>我在 <a href="https://github.com/atuooo/ExampleOfViewPG" target="_blank" rel="external">demo</a> 中写了个例子：对 imageView 进行 rotate 的操作，然后将它的<code>frame</code>赋给 grayView，从下图中就可以看出你得到的 ImageView 的 frame 并不是它实际上的位置信息。</p>
 <p><img src="http://ogem1is2k.bkt.clouddn.com/static/images/view_pg/frame_demo_ss" alt="frame_demo"></p>
@@ -165,9 +165,14 @@
     <summary type="html">
     
       &lt;p&gt;这两天把 &lt;a href=&quot;https://developer.apple.com/library/ios/documentation/WindowsViews/Conceptual/ViewPG_iPhoneOS/Introduction/Introduction.html&quot;&gt;View Programming Guide&lt;/a&gt; 看了一遍，内容不算多也很基础，不过有些注意点和问题自己以前也困惑过，所以想总结一下。也顺便写了个 &lt;a href=&quot;https://github.com/atuooo/ExampleOfViewPG&quot;&gt;demo&lt;/a&gt;，方便理解。&lt;/p&gt;
+&lt;h2 id=&quot;Frame-amp-Bounds-amp-Center&quot;&gt;&lt;a href=&quot;#Frame-amp-Bounds-amp-Center&quot; class=&quot;headerlink&quot; title=&quot;Frame &amp;amp; Bounds &amp;amp; Center&quot;&gt;&lt;/a&gt;Frame &amp;amp; Bounds &amp;amp; Center&lt;/h2&gt;&lt;p&gt;你可以独立地更改frame，bounds，和 center，但改变其中一个会对其他的造成影响：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;当你设置了 frame 属性是，bounds 属性内的尺寸值会相应的适配框架矩形的尺寸值。在 center 属性内的值同样改更改适配新的框架矩形的中心点。&lt;/li&gt;
+&lt;li&gt;当你设置了 center 属性，frame 内的原点值跟着改变。&lt;/li&gt;
+&lt;li&gt;当你设置了 bounds 属性的尺寸，在 frame 属性内的尺寸值同样改变适配新的边界矩形的尺寸。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;还有，默认情况下，子视图不会被它的父视图剪切。因此，任何位于父视图的框架外部的子视图都是以其整体呈现。你可以改变这个行为，通过设置父视图的 &lt;code&gt;clipsToBounds&lt;/code&gt; 属性为 YES。无论子视图可见部分是否被剪切，触摸事件始终遵从目标的父视图的边界矩形。换句话说，在父视图边界矩形外部的那部分视图发生的触摸事件不会发出给视图。&lt;/p&gt;
 &lt;h2 id=&quot;contentMode&quot;&gt;&lt;a href=&quot;#contentMode&quot; class=&quot;headerlink&quot; title=&quot;contentMode&quot;&gt;&lt;/a&gt;contentMode&lt;/h2&gt;&lt;p&gt;关于&lt;code&gt;contentMode&lt;/code&gt;各个mode间的区别，这张图足以说明:&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;http://stackoverflow.com/a/24671000&quot;&gt;&lt;img src=&quot;http://ogem1is2k.bkt.clouddn.com/static/images/view_pg/content_mode_overview&quot; alt=&quot;content_mode_overview&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;还有个就是&lt;code&gt;UIViewContentModeRedraw&lt;/code&gt;，当设置为这个mode时，每一次你改变视图的几何状态时，都会调用&lt;code&gt;drawRect:&lt;/code&gt;来响应视图的变化（如果你设置为其他mode的话，&lt;code&gt;drawRect:&lt;/code&gt;只会第一次显示的时候调用，之后只会在已经显示的视图内容上进行变化，不会重新绘制视图）。因此设置这个mode的话会导致视图变化响应变慢，所以你应该尽量避免使用这个值，除非你想在你的自定义视图中以自己的方式来拉伸和调整尺寸。&lt;/p&gt;
     
     </summary>
     
