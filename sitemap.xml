@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://atuo.xyz/view_pg/</loc>
+    
+    <lastmod>2016-12-05T08:57:30.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://atuo.xyz/fetch-gif/</loc>
     
     <lastmod>2016-12-05T05:43:18.000Z</lastmod>
